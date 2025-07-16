@@ -38,10 +38,12 @@ A secure RESTful API for managing job applications, built with Node.js, Express,
 ## API Endpoints
 
 ### Authentication
+
 - `POST /api/v1/auth/register` - Register a new user
 - `POST /api/v1/auth/login` - Login user
 
 ### Jobs (Protected Routes)
+
 - `GET /api/v1/jobs` - Get all jobs for the authenticated user
 - `POST /api/v1/jobs` - Create a new job
 - `GET /api/v1/jobs/:id` - Get a single job
@@ -52,7 +54,7 @@ A secure RESTful API for managing job applications, built with Node.js, Express,
 
 Create a `.env` file in the root directory and add the following:
 
-```
+```bash
 MONGO_URL=your_mongodb_connection_string
 JWT_SECRET=your_jwt_secret
 JWT_LIFETIME=1d
@@ -61,12 +63,14 @@ JWT_LIFETIME=1d
 ## Installation
 
 1. Clone the repository
+
    ```bash
    git clone [repository-url]
    cd Jobs-App
    ```
 
 2. Install dependencies
+
    ```bash
    npm install
    ```
@@ -74,13 +78,14 @@ JWT_LIFETIME=1d
 3. Set up environment variables (see above)
 
 4. Start the development server
+
    ```bash
    npm start
    ```
 
 ## Project Structure
 
-```
+```bash
 .
 ├── controllers/       # Route controllers
 ├── db/               # Database connection
@@ -96,6 +101,7 @@ JWT_LIFETIME=1d
 ## Error Handling
 
 The API uses custom error handling with the following error types:
+
 - `BadRequestError` - 400 Bad Request
 - `UnauthenticatedError` - 401 Unauthorized
 - `NotFoundError` - 404 Not Found
@@ -104,6 +110,7 @@ The API uses custom error handling with the following error types:
 ## Rate Limiting
 
 The API implements rate limiting to prevent abuse:
+
 - 100 requests per 15 minutes per IP address
 
 ## Security Best Practices
@@ -115,7 +122,3 @@ The API implements rate limiting to prevent abuse:
 - CORS enabled
 - Rate limiting
 - XSS protection
-
-## License
-
-ISC
