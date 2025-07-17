@@ -1,0 +1,330 @@
+{
+	"info": {
+		"_postman_id": "71886419-ffa3-4356-b8d2-e4bfcb506b4d",
+		"name": "Jobs-API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "45903210",
+		"_collection_link": "https://zahaanass.postman.co/workspace/Zaha-Anass's-Workspace~8e6c67c6-02be-40d0-83ac-59d2d669ea1d/collection/45903210-71886419-ffa3-4356-b8d2-e4bfcb506b4d?action=share&source=collection_link&creator=45903210"
+	},
+	"item": [
+		{
+			"name": "Register User",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const jsonData = pm.response.json();",
+							"pm.globals.set(\"accessToken\", jsonData.token)"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"susan\",\n    \"email\": \"susan@gmail.com\",\n    \"password\": \"secret\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{PROD_URL}}/auth/register",
+					"host": [
+						"{{PROD_URL}}"
+					],
+					"path": [
+						"auth",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Job",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{accessToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODc2Y2Y2NjgzYzZjMzE5ZGY5ZGIxOTUiLCJuYW1lIjoiam9obiIsImlhdCI6MTc1MjYxNjgwNiwiZXhwIjoxNzU1MjA4ODA2fQ.O2ab1kg96GOzJFDdJ3yEAPBfzbMYlhuc4N4Aoh8vMyM",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"company\": \"netflix\",\n    \"position\": \"front-end developer\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{PROD_URL}}/jobs",
+					"host": [
+						"{{PROD_URL}}"
+					],
+					"path": [
+						"jobs"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Job",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{accessToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODc2Y2Y2NjgzYzZjMzE5ZGY5ZGIxOTUiLCJuYW1lIjoiam9obiIsImlhdCI6MTc1MjYxNjgwNiwiZXhwIjoxNzU1MjA4ODA2fQ.O2ab1kg96GOzJFDdJ3yEAPBfzbMYlhuc4N4Aoh8vMyM",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"company\": \"random\",\n    \"position\": \"intern\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{PROD_URL}}/jobs/6877ba2ba08abf166ba77392",
+					"host": [
+						"{{PROD_URL}}"
+					],
+					"path": [
+						"jobs",
+						"6877ba2ba08abf166ba77392"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login User",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const jsonData = pm.response.json();",
+							"pm.globals.set(\"accessToken\", jsonData.token)"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"john@gmail.com\",\n    \"password\": \"secret\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{PROD_URL}}/auth/login",
+					"host": [
+						"{{PROD_URL}}"
+					],
+					"path": [
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Jobs",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{accessToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODc2Y2Y2NjgzYzZjMzE5ZGY5ZGIxOTUiLCJuYW1lIjoiam9obiIsImlhdCI6MTc1MjYxNjgwNiwiZXhwIjoxNzU1MjA4ODA2fQ.O2ab1kg96GOzJFDdJ3yEAPBfzbMYlhuc4N4Aoh8vMyM",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"john4@gmail.com\",\n    \"password\": \"secret\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{PROD_URL}}/jobs",
+					"host": [
+						"{{PROD_URL}}"
+					],
+					"path": [
+						"jobs"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Single Job",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{accessToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODc2Y2Y2NjgzYzZjMzE5ZGY5ZGIxOTUiLCJuYW1lIjoiam9obiIsImlhdCI6MTc1MjYxNjgwNiwiZXhwIjoxNzU1MjA4ODA2fQ.O2ab1kg96GOzJFDdJ3yEAPBfzbMYlhuc4N4Aoh8vMyM",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"john4@gmail.com\",\n    \"password\": \"secret\"\n}"
+				},
+				"url": {
+					"raw": "{{PROD_URL}}/jobs/6877b898dc6c4e3f55d8d34f",
+					"host": [
+						"{{PROD_URL}}"
+					],
+					"path": [
+						"jobs",
+						"6877b898dc6c4e3f55d8d34f"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Job",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{accessToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODc2Y2Y2NjgzYzZjMzE5ZGY5ZGIxOTUiLCJuYW1lIjoiam9obiIsImlhdCI6MTc1MjYxNjgwNiwiZXhwIjoxNzU1MjA4ODA2fQ.O2ab1kg96GOzJFDdJ3yEAPBfzbMYlhuc4N4Aoh8vMyM",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "{{URL}}/jobs/6877ba39a08abf166ba77394",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"jobs",
+						"6877ba39a08abf166ba77394"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "PROD_URL",
+			"value": "https://jobs-app-production.up.railway.app",
+			"type": "string"
+		}
+	]
+}
