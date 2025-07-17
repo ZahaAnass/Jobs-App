@@ -114,7 +114,7 @@ Explore the live API documentation:
    npm start
    ```
 
-5. Access the API documentation at `http://localhost:3000/api-docs/`
+5. Access the API documentation at `http://localhost:5000/api-docs/`
 
 ## Error Handling
 
